@@ -28,7 +28,7 @@ export const SplashTextBottom = styled(Animated.Text)`
 export const SplashImage = styled(Animated.Image)`
   width: 445px;
   height: 297px;
-  margin-left: 280px;
+  left: 180px;
   align-self: center;
 `;
 

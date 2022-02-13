@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   SplashImage,
   SplashTextBottom,
@@ -12,6 +12,14 @@ const SplashScreen = (props: any) => {
   const anim = useRef(new Animated.Value(0)).current;
   const fadeImg = useRef(new Animated.Value(0)).current;
   const animImg = useRef(new Animated.Value(0)).current;
+  const [carIndex, setCarIndex] = useState(0);
+
+  const carImg = [
+    require('../assets/image/2017-volkswagen-gti-se-5door-hatchback-front-view.png'),
+    require('../assets/image/Alfa-Romeo-Car-PNG.png'),
+    require('../assets/image/black_bmw.png'),
+    require('../assets/image/blue_mustang.png'),
+  ];
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,15 +36,30 @@ const SplashScreen = (props: any) => {
         }),
       ]).start();
     }, 3000);
+    Animated.loop(
+      Animated.sequence([
+        Animated.delay(6000),
+        Animated.timing(animImg, {
+          toValue: 200,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.delay(3000),
+        Animated.timing(animImg, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+      ]),
+    ).start();
   }, []);
 
-  setTimeout(() => {
-    Animated.timing(animImg, {
-      toValue: -width * 1.5,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  }, 9000);
+  useEffect(() => {
+    setTimeout(() => {
+      setCarIndex(Math.floor(Math.random() * 4));
+      console.log('carIndex', carIndex);
+    }, 6000);
+  });
 
   return (
     <SplashView
@@ -51,7 +74,7 @@ const SplashScreen = (props: any) => {
       </SplashTextBottom>
       <SplashImage
         style={{opacity: fadeImg, transform: [{translateX: animImg}]}}
-        source={require('../assets/image/2017-volkswagen-gti-se-5door-hatchback-front-view.png')}
+        source={carImg[carIndex]}
       />
     </SplashView>
   );
