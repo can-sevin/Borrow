@@ -1,6 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  ButtonText,
+  MainView,
+  SplashButton,
   SplashImage,
+  SplashLinear,
   SplashTextBottom,
   SplashTextTop,
   SplashView,
@@ -8,7 +12,7 @@ import {
 import {Animated, Dimensions} from 'react-native';
 
 const SplashScreen = (props: any) => {
-  const {width, height} = Dimensions.get('window');
+  const {height} = Dimensions.get('window');
   const anim = useRef(new Animated.Value(0)).current;
   const fadeImg = useRef(new Animated.Value(0)).current;
   const animImg = useRef(new Animated.Value(0)).current;
@@ -21,11 +25,15 @@ const SplashScreen = (props: any) => {
     require('../assets/image/blue_mustang.png'),
   ];
 
+  const changeScreen = () => {
+    props.navigation.replace('OnBoarding');
+  };
+
   useEffect(() => {
     setTimeout(() => {
       Animated.parallel([
         Animated.timing(anim, {
-          toValue: -height * 0.16,
+          toValue: -height * 0.06,
           duration: 3500,
           useNativeDriver: true,
         }),
@@ -40,7 +48,7 @@ const SplashScreen = (props: any) => {
       Animated.sequence([
         Animated.delay(6000),
         Animated.timing(animImg, {
-          toValue: 200,
+          toValue: 220,
           duration: 500,
           useNativeDriver: true,
         }),
@@ -58,25 +66,32 @@ const SplashScreen = (props: any) => {
     setTimeout(() => {
       setCarIndex(Math.floor(Math.random() * 4));
       console.log('carIndex', carIndex);
-    }, 6000);
+    }, 6500);
   });
 
   return (
-    <SplashView
-      start={{x: 0, y: 0}}
-      end={{x: 0, y: 1}}
-      colors={['#514BC3', '#4048BF']}>
-      <SplashTextTop style={{transform: [{translateY: anim}]}}>
-        Borrow
-      </SplashTextTop>
-      <SplashTextBottom style={{transform: [{translateY: anim}]}}>
-        Get a car.
-      </SplashTextBottom>
-      <SplashImage
-        style={{opacity: fadeImg, transform: [{translateX: animImg}]}}
-        source={carImg[carIndex]}
-      />
-    </SplashView>
+    <MainView>
+      <SplashView>
+        <SplashLinear
+          start={{x: 0, y: 0}}
+          end={{x: 0, y: 1}}
+          colors={['#514BC3', '#4048BF']}>
+          <SplashTextTop style={{transform: [{translateY: anim}]}}>
+            Borrow
+          </SplashTextTop>
+          <SplashTextBottom style={{transform: [{translateY: anim}]}}>
+            Get a car.
+          </SplashTextBottom>
+          <SplashImage
+            style={{opacity: fadeImg, transform: [{translateX: animImg}]}}
+            source={carImg[carIndex]}
+          />
+        </SplashLinear>
+      </SplashView>
+      <SplashButton onPress={changeScreen}>
+        <ButtonText>Get Started</ButtonText>
+      </SplashButton>
+    </MainView>
   );
 };
 
