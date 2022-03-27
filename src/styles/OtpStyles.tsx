@@ -24,6 +24,13 @@ export const HeaderText = styled(ButtonText)`
   font-family: 'Poppins-Regular';
 `;
 
+export const OtpText = styled(ButtonText)`
+  width: 90%;
+  line-height: 30px;
+  text-align: left;
+  font-family: 'Poppins-SemiBold';
+`;
+
 export const PrivacyText = styled(ButtonText)`
   font-size: 12px;
   width: 180px;
@@ -35,39 +42,30 @@ export const PrivacyText = styled(ButtonText)`
   font-family: 'Poppins-Regular';
 `;
 
-export const ErrorText = styled(PrivacyText)`
-  font-size: 16px;
-  color: #4048bf;
-  font-family: 'Poppins-SemiBold';
-`;
-
 export const PrivacyTextClickable = styled(PrivacyText)`
   color: #4048bf;
-`;
-
-export const CountryInput = styled(TextInput)`
-  width: 14.6%;
-  height: 48px;
-  font-size: 18px;
-  color: white;
-  border: none;
-  margin-right: 5.3%;
-  border-bottom-width: 1px;
-  border-bottom-color: #4048bf;
+  text-align: center;
+  align-self: center;
 `;
 
 export const InputView = styled(View)`
   flex-direction: row;
+  justify-content: space-evenly;
+  width: 84%;
 `;
 
-export const PhoneInput = styled(TextInput)`
-  width: 64%;
-  height: 48px;
-  font-size: 18px;
+export const OtpInput = styled(TextInput)`
+  width: 14%;
+  background-color: #58517b;
+  height: 73px;
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Poppins-Regular';
   color: white;
   border: none;
-  border-bottom-width: 1px;
-  border-bottom-color: #4048bf;
+  border-radius: 16px;
 `;
 
 export const NextButton = styled(TouchableOpacity)`

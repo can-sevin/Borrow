@@ -26,7 +26,7 @@ export const MainView = styled(View)`
 export const SplashButton = styled(TouchableOpacity)`
   width: 84%;
   height: 6.8%;
-  border-radius: 8px;
+  border-radius: 16px;
   margin-bottom: 16%;
   background-color: #514bc3;
   justify-content: center;
@@ -38,7 +38,7 @@ export const SplashTextTop = styled(Animated.Text)`
   color: white;
   align-self: center;
   align-content: center;
-  font-family: 'Lato-Black';
+  font-family: 'Poppins-SemiBold';
   margin-bottom: 22px;
 `;
 
@@ -47,7 +47,7 @@ export const SplashTextBottom = styled(Animated.Text)`
   color: white;
   align-self: center;
   align-content: center;
-  font-family: 'Lato-Bold';
+  font-family: 'Poppins-Medium';
 `;
 
 export const ButtonText = styled(Text)`
@@ -55,7 +55,7 @@ export const ButtonText = styled(Text)`
   color: white;
   align-self: center;
   align-content: center;
-  font-family: 'Lato-Bold';
+  font-family: 'Poppins-Medium';
 `;
 
 export const SplashImage = styled(Animated.Image)`

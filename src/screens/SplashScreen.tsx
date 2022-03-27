@@ -66,7 +66,7 @@ const SplashScreen = (props: any) => {
     setTimeout(() => {
       setCarIndex(Math.floor(Math.random() * 4));
       console.log('carIndex', carIndex);
-    }, 6500);
+    }, 7000);
   });
 
   return (
